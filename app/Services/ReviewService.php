@@ -19,4 +19,9 @@ class ReviewService
     {
         return $deposition->update($reviewData);
     }
+
+    public function returnReviews(): array
+    {
+        return  Review::get()->unique('id')->random(3)->toArray();
+    }
 }

@@ -9,11 +9,8 @@ use App\Http\Requests\ReviewRequest;
 
 class ReviewController extends Controller
 {
-    protected ReviewService $service;
-
-    public function __construct(ReviewService $service)
+    public function __construct(protected readonly ReviewService $service)
     {
-        $this->service = $service;
     }
 
     public function store(ReviewRequest $request): JsonResponse
@@ -29,5 +26,10 @@ class ReviewController extends Controller
     public function destroy(Review $review): JsonResponse
     {
         return response()->json($review->delete());
+    }
+
+    public function returnReviews(): JsonResponse
+    {
+        return response()->json($this->service->returnReviews());
     }
 }

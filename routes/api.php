@@ -22,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('/depoimentos', ReviewController::class)->parameters([
     'depoimentos' => 'review',
 ])->only('store', 'update', 'destroy');
+
+Route::get('/depoimentos-home', [ReviewController::class, 'returnReviews'])->name('depoimentos');
