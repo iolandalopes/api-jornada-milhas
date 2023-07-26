@@ -28,3 +28,4 @@ Route::get('/depoimentos-home', [ReviewController::class, 'returnReviews'])->nam
 Route::apiResource('/destinos', WhitherController::class)->parameters([
     'destinos' => 'whither',
 ])->only('store', 'update', 'destroy');
+Route::get('/destinos', [WhitherController::class, 'searchWhithers'])->name('destinos');

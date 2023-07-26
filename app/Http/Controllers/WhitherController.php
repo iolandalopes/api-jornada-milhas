@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateWhitherRequest;
 use App\Models\Whither;
 use App\Services\WhitherService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class WhitherController extends Controller
 {
@@ -27,5 +28,10 @@ class WhitherController extends Controller
     public function destroy(Whither $whither): JsonResponse
     {
         return response()->json($whither->delete());
+    }
+
+    public function searchWhithers(Request $request): JsonResponse
+    {
+        return response()->json($this->service->searchWhither($request->nome));
     }
 }
